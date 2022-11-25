@@ -1,0 +1,8 @@
+.banner{
+    background-image: url(../../../images/hero_image.jpg);
+}
+
+.banner-des{
+    padding-top: 180px;
+    padding-bottom: 180px;
+}
