@@ -1,6 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
-import HomeBanner from "../../Pages/Home/HomeBanner/HomeBanner";
+import Home from "../../Pages/Home/Home/Home";
+import Login from "../../Pages/Login/Login";
+import Register from "../../Pages/Register/Register";
+import Products from "../../Pages/Products/Products";
+
 
 const router = createBrowserRouter([
     {
@@ -9,7 +13,20 @@ const router = createBrowserRouter([
         children : [
             {
                 path : '/',
-                element : <HomeBanner></HomeBanner>
+                element : <Home></Home>
+            },
+            {
+                path : '/products/:category',
+                element : <Products></Products>,
+                loader : ({params}) => fetch(`http://localhost:5000/products/${params.category}`)
+            },
+            {
+                path : '/login',
+                element: <Login></Login>
+            },
+            {
+                path : '/register',
+                element: <Register></Register>
             }
         ]
     }
