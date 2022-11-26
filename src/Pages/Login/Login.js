@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
     const {userLogIn, googleLogIn} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogIn = e => {
         e.preventDefault()
@@ -15,12 +18,12 @@ const Login = () => {
         userLogIn(email, password)
         .then(result => {
             const user = result.user 
-            console.log(user)
+            navigate(from, {replace: true})
         })
         .catch(err => console.error(err))
     }
     return (
-        <div>
+        <div className='mb-32'>
             <div className="hero">
                 <div style={{ height: '500px', width: "400px" }} className="mt-20">
                     <div className="card flex-shrink-0 shadow-2xl bg-base-100">
