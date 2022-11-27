@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductBooking = ({ product }) => {
     const { user } = useContext(AuthContext)
@@ -35,7 +37,7 @@ const ProductBooking = ({ product }) => {
         .then(res => res.json())
         .then(data => {
             if(data.acknowledged){
-                alert('product booked')
+                toast.success('successfully add Product')
             }
         })
     }

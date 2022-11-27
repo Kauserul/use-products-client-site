@@ -7,6 +7,8 @@ import Products from "../../Pages/Products/Products";
 import Blog from "../../Pages/Blog/Blog";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import DashboardLayout from "../../layout/DashboardLayout";
+import Dashboard from "../../Pages/Dashboard/Dashboard";
 
 
 const router = createBrowserRouter([
@@ -35,6 +37,17 @@ const router = createBrowserRouter([
             {
                 path : '/blog',
                 element : <Blog></Blog>
+            },
+            
+        ]
+    },
+    {
+        path : '/dashboard',
+        element : <DashboardLayout></DashboardLayout>,
+        children : [
+            {
+                path : '/dashboard',
+                element : <Dashboard></Dashboard>
             }
         ]
     }

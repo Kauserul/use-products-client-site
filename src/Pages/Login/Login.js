@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
-    const {userLogIn, googleLogIn} = useContext(AuthContext)
+    const { userLogIn, googleLogIn, user } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || "/";
@@ -14,13 +14,19 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        
+
         userLogIn(email, password)
-        .then(result => {
-            const user = result.user 
-            navigate(from, {replace: true})
-        })
-        .catch(err => console.error(err))
+            .then(result => {
+                const user = result.user
+                navigate(from, { replace: true })
+            })
+            .catch(err => console.error(err))
+    }
+
+    const handleGoogleLogIn = () => {
+        googleLogIn()
+        .then(res => res.json())
+        .catch(error => console.log(error))
     }
     return (
         <div className='mb-32'>
@@ -44,7 +50,7 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary text-white">Login</button>
-                                <button onClick={() => googleLogIn()} className="btn btn-success text-white mt-5">Google</button>
+                                <button onClick={() => handleGoogleLogIn()} className="btn btn-success text-white mt-5">Google</button>
                             </div>
                             <p className='text-dark p-4'>Don't have any account? Please <Link to='/register' className='text-success'>Sign up</Link></p>
                         </form>
