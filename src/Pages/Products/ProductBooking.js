@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ProductBooking = ({ product }) => {
     const { user } = useContext(AuthContext)
-    const { name, resale_price, } = product
+    const { name, resale_price, img} = product
     
     const handleBooking = e => {
         e.preventDefault()
@@ -24,6 +24,7 @@ const ProductBooking = ({ product }) => {
             productName,
             productPrice,
             phone,
+            img,
             location
         }
 

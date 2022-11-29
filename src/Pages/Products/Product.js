@@ -14,8 +14,8 @@ const Product = ({ product, setProduct }) => {
                         <p><span className='font-bold'>Seller Name</span> : {sellers_name}</p>
                     }
                     <p><span className='font-bold'>Location</span> : {location}</p>
-                    <p><span className='font-bold'>Resale Price</span> : $ {resale_price}</p>
-                    <p><span className='font-bold'>Original Price</span> : $ {original_price}</p>
+                    <p><span className='font-bold'>Resale Price</span> : {resale_price}</p>
+                    <p><span className='font-bold'>Original Price</span> : {original_price}</p>
                     <p><span className='font-bold'>Used</span> : {used}</p>
                     <p><span className='font-bold'>Posted</span> : {post}</p>
                     <div className="card-actions justify-end">

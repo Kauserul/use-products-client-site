@@ -16,6 +16,7 @@ import AllBuyers from "../../Pages/Dashboard/AllBuyers";
 import AdminRoutes from "../AdminRoutes/AdminRoutes";
 import MyProducts from "../../Pages/Dashboard/MyProducts";
 import SellerRoutes from "../SellerRoutes/SellerRoutes";
+import BuyerRoutes from "../BuyerRoutes/BuyerRoutes";
 
 
 const router = createBrowserRouter([
