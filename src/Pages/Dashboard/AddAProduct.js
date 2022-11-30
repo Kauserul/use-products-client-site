@@ -17,13 +17,35 @@ const AddAProduct = () => {
             method: "POST",
             body: formData
         })
-        .then(res => res.json())
-        .then(imgData => {
-            console.log(imgData)
-            if(imgData.success){
-                console.log(imgData.data.url)
-            }
-        })
+            .then(res => res.json())
+            .then(imgData => {
+                console.log(imgData)
+                if (imgData.success) {
+                    const product = {
+                        name : data.name,
+                        location : data.location,
+                        resale_price : data.resaleprice,
+                        original_price: data.originalprice,
+                        img: imgData.data.url,
+                        used: data.purchase,
+                        category: data.category
+                    }
+                    fetch(`https://second-hand-mobile-server-site.vercel.app/addproduct`, {
+                        method: "POST",
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(product)
+                    })
+                    .then(res => res.json())
+                    .then(data =>{
+                        if(data.acknowledged){
+                            toast.success('Product added')
+                            
+                        }
+                    })
+                }
+            })
     }
     return (
         <div className='w-3/5 p-6'>
@@ -38,8 +60,14 @@ const AddAProduct = () => {
                             })} className="input input-bordered w-full max-w-xs" />
                         </div>
                         <div className="form-control w-full max-w-xs">
-                            <label className="label"> <span className="label-text">Product Price</span></label>
-                            <input type="text" {...register("price", {
+                            <label className="label"> <span className="label-text">Original Price</span></label>
+                            <input type="text" {...register("originalprice", {
+                                required: true
+                            })} className="input input-bordered w-full max-w-xs" />
+                        </div>
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label"> <span className="label-text">Resale Price</span></label>
+                            <input type="text" {...register("resaleprice", {
                                 required: true
                             })} className="input input-bordered w-full max-w-xs" />
                         </div>
@@ -57,20 +85,21 @@ const AddAProduct = () => {
                                 required: true
                             })} className="input input-bordered w-full max-w-xs" />
                         </div>
+
+                    </div>
+                    <div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Location </span></label>
                             <input type="text" {...register("location", {
                                 required: true
                             })} className="input input-bordered w-full max-w-xs" />
                         </div>
-                    </div>
-                    <div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">product category</span></label>
                             <select {...register('category')} className="select select-bordered w-full max-w-xs">
                                 <option>Bed Room</option>
                                 <option>Kitchen Room</option>
-                                <option>Dining Room</option>
+                                <option>Dinning Room</option>
                             </select>
                         </div>
                         <div className="form-control w-full max-w-xs">

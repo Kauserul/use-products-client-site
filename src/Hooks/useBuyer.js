@@ -5,7 +5,7 @@ const useBuyer = email => {
     const [isBuyerLoading, setIsBuyerLoading] = useState(true)
     useEffect( ()=>{
         if(email){
-            fetch(`http://localhost:5000/user/buyer/${email}`)
+            fetch(`https://second-hand-mobile-server-site.vercel.app/user/buyer/${email}`)
             .then(res => res.json())
             .then(data =>{
                 setIsBuyer(true)

@@ -7,13 +7,13 @@ const Categories = () => {
     const { data: products = [], } = useQuery({
         queryKey: ['furniture'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/furniture')
+            const res = await fetch('https://second-hand-mobile-server-site.vercel.app/furniture')
             const data = await res.json()
             return data
         }
     })
 
-    console.log(products)
+    // console.log(products)
 
     return (
         <div>

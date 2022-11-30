@@ -32,7 +32,7 @@ const router = createBrowserRouter([
             {
                 path : '/products/:category',
                 element : <PrivateRoutes><Products></Products></PrivateRoutes>,
-                loader : ({params}) => fetch(`http://localhost:5000/products/${params.category}`)
+                loader : ({params}) => fetch(`https://second-hand-mobile-server-site.vercel.app/products/${params.category}`)
             },
             {
                 path : '/login',

@@ -25,8 +25,26 @@ const Login = () => {
 
     const handleGoogleLogIn = () => {
         googleLogIn()
-        .then(res => res.json())
-        .catch(error => console.log(error))
+        .then(result =>{
+            const user = result.user 
+            const userInfo = {
+                name : user?.displayName,
+                email : user?.email,
+                role : 'buyer'
+            }
+            fetch('https://second-hand-mobile-server-site.vercel.app/googleuser', {
+                method: "POST",
+                headers: {
+                    'content-type' : "application/json"
+                },
+                body : JSON.stringify(userInfo)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+        })
+        .catch(err => console.error(err))
     }
     return (
         <div className='mb-32'>
