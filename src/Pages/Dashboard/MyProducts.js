@@ -47,8 +47,7 @@ const MyProducts = () => {
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {
-                        AddAProduct.length > 0 &&
-
+                        AddAProduct &&
                         <thead>
                             <tr>
 

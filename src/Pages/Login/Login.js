@@ -18,6 +18,7 @@ const Login = () => {
         userLogIn(email, password)
             .then(result => {
                 const user = result.user
+                console.log(user)
                 navigate(from, { replace: true })
             })
             .catch(err => console.error(err))
@@ -69,10 +70,10 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button type='submit' className="btn btn-primary text-white">Login</button>
-                                <button onClick={() => handleGoogleLogIn()} className="btn btn-success text-white mt-5">Google</button>
                             </div>
                             <p className='text-dark p-4'>Don't have any account? Please <Link to='/register' className='text-success'>Sign up</Link></p>
                         </form>
+                                <button onClick={() => handleGoogleLogIn()} className="btn btn-success text-white mt-5">Google</button>
                     </div>
                 </div>
             </div>
