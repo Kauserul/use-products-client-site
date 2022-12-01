@@ -32,7 +32,7 @@ const Login = () => {
                 email : user?.email,
                 role : 'buyer'
             }
-            fetch('http://localhost:5000/googleuser', {
+            fetch('https://second-hand-mobile-server-site.vercel.app/googleuser', {
                 method: "POST",
                 headers: {
                     'content-type' : "application/json"

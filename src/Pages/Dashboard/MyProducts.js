@@ -7,7 +7,7 @@ const MyProducts = () => {
     const { data: products = [] , isLoading} = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/addproduct`)
+            const res = await fetch(`https://second-hand-mobile-server-site.vercel.app/addproduct`)
             const data = await res.json()
             return data
         }
@@ -18,7 +18,7 @@ const MyProducts = () => {
     }
 
     const handleAdvertise = product => {
-        fetch(`http://localhost:5000/advertise`, {
+        fetch(`https://second-hand-mobile-server-site.vercel.app/advertise`, {
             method: "POST",
             headers: {
                 'content-type': "application/json"
@@ -32,7 +32,7 @@ const MyProducts = () => {
     }
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/myorder/${id}`, {
+        fetch(`https://second-hand-mobile-server-site.vercel.app/myorder/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

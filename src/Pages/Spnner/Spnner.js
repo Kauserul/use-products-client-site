@@ -2,7 +2,7 @@ import React from 'react';
 
 const Spnner = () => {
     return (
-        <div>
+        <div className='flex justify-center items-center'>
             <progress className="progress w-56"></progress>
         </div>
     );

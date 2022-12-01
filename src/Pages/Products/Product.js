@@ -3,9 +3,9 @@ import { FaCheckCircle } from "react-icons/fa";
 
 const Product = ({ product, setProduct }) => {
     const { img, name, location, original_price, post, resale_price, used, sellers_name } = product;
-    
+
     const handleReport = product => {
-        fetch(`http://localhost:5000/reporteditems`,{
+        fetch(`https://second-hand-mobile-server-site.vercel.app/reporteditems`,{
             method: "POST",
             headers: {
                 'content-type': "application/json"

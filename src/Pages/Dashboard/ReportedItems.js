@@ -5,13 +5,13 @@ const ReportedItems = () => {
     const {data : reportedProducts = []} = useQuery({
         queryKey: ['reportedproducts'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/reporteditems`)
+            const res = await fetch(`https://second-hand-mobile-server-site.vercel.app/reporteditems`)
             const data = await res.json()
             return data
         }
     })
     const handleDelete = id => {
-        fetch(`http://localhost:5000/reporteditems/${id}`, {
+        fetch(`https://second-hand-mobile-server-site.vercel.app/reporteditems/${id}`, {
             method: "DELETE"
         })
         .then(res => res.json())

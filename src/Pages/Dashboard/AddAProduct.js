@@ -30,7 +30,7 @@ const AddAProduct = () => {
                         used: data.purchase,
                         category: data.category
                     }
-                    fetch(`http://localhost:5000/addproduct`, {
+                    fetch(`https://second-hand-mobile-server-site.vercel.app/addproduct`, {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json'
