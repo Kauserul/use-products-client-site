@@ -5,12 +5,18 @@ const Product = ({ product, setProduct }) => {
     const { img, name, location, original_price, post, resale_price, used, sellers_name } = product;
 
     const handleReport = product => {
+        const product1 = {
+            name,
+            img,
+            resale_price,
+            sellers_name
+        }
         fetch(`https://second-hand-mobile-server-site.vercel.app/reporteditems`,{
             method: "POST",
             headers: {
                 'content-type': "application/json"
             },
-            body: JSON.stringify(product)
+            body: JSON.stringify(product1)
         })
         .then(res => res.json())
         .then(data => {

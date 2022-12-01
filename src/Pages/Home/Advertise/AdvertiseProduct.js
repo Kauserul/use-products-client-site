@@ -26,7 +26,7 @@ const AdvertiseProduct = () => {
                         {
                             advertiseProduct.map(product => <Product
                                 key={product._id}
-                                product={product}Auth
+                                product={product}
                             ></Product>)
                         }
                     </div>

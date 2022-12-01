@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const ReportedItems = () => {
-    const {data : reportedProducts = []} = useQuery({
+    const { data: reportedProducts = [] } = useQuery({
         queryKey: ['reportedproducts'],
         queryFn: async () => {
             const res = await fetch(`https://second-hand-mobile-server-site.vercel.app/reporteditems`)
@@ -14,17 +14,19 @@ const ReportedItems = () => {
         fetch(`https://second-hand-mobile-server-site.vercel.app/reporteditems/${id}`, {
             method: "DELETE"
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
     }
     return (
         <div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
-                    
-                    <thead>
+
+                    {
+                        reportedProducts.length > 0 &&
+                        <thead>
                         <tr>
                             
                             <th>Name</th>
@@ -33,6 +35,7 @@ const ReportedItems = () => {
                             <th></th>
                         </tr>
                     </thead>
+                    }
                     <tbody>
                         {
                             reportedProducts.map(product => <tr>
