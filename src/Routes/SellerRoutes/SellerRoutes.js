@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useSellers from '../../Hooks/useSellers';
+import Spnner from '../../Pages/Spnner/Spnner';
 
 const SellerRoutes = ({children}) => {
     const {user} = useContext(AuthContext)
@@ -10,7 +11,7 @@ const SellerRoutes = ({children}) => {
 
 
     if(isSellersLoading){
-        return <div>Loading...</div>
+        return <Spnner></Spnner>
     }
 
     if(user?.email && isSellers){

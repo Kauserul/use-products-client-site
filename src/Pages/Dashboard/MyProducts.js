@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Spnner from '../Spnner/Spnner';
 import AddAProduct from './AddAProduct';
 
 const MyProducts = () => {
-    const { data: products = [] } = useQuery({
+    const { data: products = [] , isLoading} = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/addproduct`)
@@ -11,6 +12,10 @@ const MyProducts = () => {
             return data
         }
     })
+
+    if(isLoading){
+        return <Spnner></Spnner>
+    }
 
     const handleAdvertise = product => {
         fetch(`http://localhost:5000/advertise`, {

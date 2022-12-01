@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { toast } from 'react-toastify';
+import Spnner from '../Spnner/Spnner';
 
 const AllSellers = () => {
 
-    const {data: allSeller = [], refetch} = useQuery({
+    const {data: allSeller = [], refetch, isLoading} = useQuery({
         queryKey : ['allseller'],
         queryFn: async () =>{
             const res = await fetch(`http://localhost:5000/allseller`)
@@ -25,6 +26,9 @@ const AllSellers = () => {
                 toast.success('User deleted')
             }
         })
+    }
+    if(isLoading){
+        return <Spnner></Spnner>
     }
     return (
         <div>

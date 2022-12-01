@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Spnner from '../Spnner/Spnner';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext)
 
-    const { data: myOrders = [] } = useQuery({
+    const { data: myOrders = [], isLoading } = useQuery({
         queryKey: ['myorder', user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/myorder?email=${user?.email}`)
@@ -13,6 +14,10 @@ const MyOrders = () => {
             return data;
         }
     })
+
+    if(isLoading){
+        return <Spnner></Spnner>
+    }
     // console.log(myOrders)
     return (
         <div>

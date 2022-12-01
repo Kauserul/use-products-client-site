@@ -8,12 +8,15 @@ const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     const userRegister = (email, password) =>{
+        
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const userLogIn = (email, password) =>{
+        
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -32,6 +35,7 @@ const AuthProvider = ({children}) => {
     useEffect( () =>{
         const unSubscribe = () =>{
             return onAuthStateChanged(auth, currentUser =>{
+                setLoading(false)
                 setUser(currentUser)
             })
         }
@@ -41,7 +45,7 @@ const AuthProvider = ({children}) => {
 
     console.log(user)
 
-    const authInfo = {user, userRegister, userLogIn, googleLogIn, updateUser, userLogOut}
+    const authInfo = {user, userRegister, userLogIn, googleLogIn, updateUser, userLogOut, loading}
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

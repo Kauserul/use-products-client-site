@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
+import Spnner from '../../Pages/Spnner/Spnner';
 
 const AdminRoutes = ({children}) => {
     const {user} = useContext(AuthContext)
@@ -9,7 +10,7 @@ const AdminRoutes = ({children}) => {
     const location = useLocation()
 
     if(isAdminLoading){
-        return <div>Loading...</div>
+        return <Spnner></Spnner>
     }
 
     if(user?.email && isAdmin){

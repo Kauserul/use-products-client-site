@@ -18,6 +18,7 @@ import MyProducts from "../../Pages/Dashboard/MyProducts";
 import SellerRoutes from "../SellerRoutes/SellerRoutes";
 import BuyerRoutes from "../BuyerRoutes/BuyerRoutes";
 import ReportedItems from "../../Pages/Dashboard/ReportedItems";
+import Spnner from "../../Pages/Spnner/Spnner";
 
 
 const router = createBrowserRouter([
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
             {
                 path : '/blog',
                 element : <Blog></Blog>
+            },
+            {
+                path : '/spnner',
+                element : <Spnner></Spnner>
             },
             
         ]

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useBuyer from '../../Hooks/useBuyer';
+import Spnner from '../../Pages/Spnner/Spnner';
 
 const BuyerRoutes = ({children}) => {
     const {user} = useContext(AuthContext)
@@ -9,7 +10,7 @@ const BuyerRoutes = ({children}) => {
     const location = useLocation()
 
     if(isBuyerLoading){
-        return <div>Loading...</div>
+        return <Spnner></Spnner>
     }
 
     if(user?.email && isBuyer){
