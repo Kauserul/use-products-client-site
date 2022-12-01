@@ -28,7 +28,7 @@ const ProductBooking = ({ product }) => {
             location
         }
 
-        fetch(`https://second-hand-mobile-server-site.vercel.app/booking`, {
+        fetch(`http://localhost:5000/booking`, {
             method : "POST",
             headers: {
                 'content-type' : "application/json"

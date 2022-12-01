@@ -7,7 +7,7 @@ const AdvertiseProduct = () => {
     const { data: advertiseProduct = [] } = useQuery({
         queryKey: ['advertise'],
         queryFn: async () => {
-            const res = await fetch(`https://second-hand-mobile-server-site.vercel.app/advertise`)
+            const res = await fetch(`http://localhost:5000/advertise`)
             const data = await res.json()
             return data
         }
@@ -26,7 +26,7 @@ const AdvertiseProduct = () => {
                         {
                             advertiseProduct.map(product => <Product
                                 key={product._id}
-                                product={product}
+                                product={product}Auth
                             ></Product>)
                         }
                     </div>

@@ -17,6 +17,7 @@ import AdminRoutes from "../AdminRoutes/AdminRoutes";
 import MyProducts from "../../Pages/Dashboard/MyProducts";
 import SellerRoutes from "../SellerRoutes/SellerRoutes";
 import BuyerRoutes from "../BuyerRoutes/BuyerRoutes";
+import ReportedItems from "../../Pages/Dashboard/ReportedItems";
 
 
 const router = createBrowserRouter([
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
             {
                 path : '/products/:category',
                 element : <PrivateRoutes><Products></Products></PrivateRoutes>,
-                loader : ({params}) => fetch(`https://second-hand-mobile-server-site.vercel.app/products/${params.category}`)
+                loader : ({params}) => fetch(`http://localhost:5000/products/${params.category}`)
             },
             {
                 path : '/login',
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
             {
                 path : '/dashboard/allbuyers',
                 element : <AdminRoutes><AllBuyers></AllBuyers></AdminRoutes>
+            },
+            {
+                path : '/dashboard/reporteditems',
+                element : <AdminRoutes><ReportedItems></ReportedItems></AdminRoutes>
             },
         ]
     }

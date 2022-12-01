@@ -35,10 +35,11 @@ const AuthProvider = ({children}) => {
                 setUser(currentUser)
             })
         }
-        return () =>{
-            unSubscribe()
-        }
+        return () =>unSubscribe();
+        
     }, [])
+
+    console.log(user)
 
     const authInfo = {user, userRegister, userLogIn, googleLogIn, updateUser, userLogOut}
     return (

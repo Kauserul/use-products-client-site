@@ -32,7 +32,7 @@ const Login = () => {
                 email : user?.email,
                 role : 'buyer'
             }
-            fetch('https://second-hand-mobile-server-site.vercel.app/googleuser', {
+            fetch('http://localhost:5000/googleuser', {
                 method: "POST",
                 headers: {
                     'content-type' : "application/json"
@@ -43,6 +43,7 @@ const Login = () => {
             .then(data => {
                 console.log(data)
             })
+            
         })
         .catch(err => console.error(err))
     }
@@ -67,7 +68,7 @@ const Login = () => {
 
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary text-white">Login</button>
+                                <button type='submit' className="btn btn-primary text-white">Login</button>
                                 <button onClick={() => handleGoogleLogIn()} className="btn btn-success text-white mt-5">Google</button>
                             </div>
                             <p className='text-dark p-4'>Don't have any account? Please <Link to='/register' className='text-success'>Sign up</Link></p>
